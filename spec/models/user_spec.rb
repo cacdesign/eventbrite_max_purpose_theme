@@ -1,9 +1,4 @@
-require 'test_helper'
-
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+require 'rails_helper'
 
 
 RSpec.describe User, type: :model do
@@ -31,11 +26,10 @@ RSpec.describe User, type: :model do
       it { expect(@user).to validate_presence_of(:last_name) }
     end
 
-    describe "#username" do
-      it { expect(@user).to validate_length_of(:username).is_at_least(3) }
-    end
+
 
   end
+
 
   context "associations" do
 
@@ -45,23 +39,8 @@ RSpec.describe User, type: :model do
 
   end
 
-  context "public instance methods" do
 
-    describe "#full_name" do
-
-      it "should return a string" do
-        expect(@user.full_name).to be_a(String)
-      end
-
-      it "should return the full name" do
-        expect(@user.full_name).to eq("John Doe")
-        user_2 = create(:user, first_name: "Jean-Michel", last_name: "Durant")
-        expect(user_2.full_name).to eq("Jean-Michel Durant")
-      end
-    end
-
-  end
+  
 
 end
 
-end
