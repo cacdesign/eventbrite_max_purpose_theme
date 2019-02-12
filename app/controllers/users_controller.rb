@@ -13,17 +13,21 @@ class UsersController < ApplicationController
 
 	def update
 		@user=current_user
-		puts '$'*30
-		puts params[:user][:first_name]
-		puts params[:user][:last_name]
-		puts params[:user][:description]
+	
+		puts first_name = params[:user][:first_name]
+		puts last_name = params[:user][:last_name]
+		puts description =  params[:user][:description]
+
+		 @user.update(first_name: first_name, last_name: last_name,  description: description)
+	
 
 
-		User.update(first_name:params[:user][:first_name], last_name:params[:user][:last_name], description:params[:user][:description])
-		if User.update
+		if @user.save
 			flash[:success] = "Profile has been updated"
+			redirect_to user_path(@user)
 		else
 			flash[:danger] = "Oups, something went wrong"
+			edit_user_path(@user)
 		end
 
 	end

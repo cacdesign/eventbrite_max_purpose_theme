@@ -49,7 +49,7 @@ class EventsController < ApplicationController
 
     if e.save
      flash[:success] = "Event has been successfully created"
-      redirect_to events_path
+      redirect_to event_path(e)
 
     else
      flash[:danger] = "Oups, something went wrong"
