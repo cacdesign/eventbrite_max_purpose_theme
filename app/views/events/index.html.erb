@@ -1,0 +1,37 @@
+<div style="text-align:center"class="jumbotron">
+  <h1 class="display-4">Coming events </h1>
+  <p class="lead">Do not miss coming events in your city</p>
+  <hr class="my-4">     
+   
+
+  <p>Don't be shy and create a new event</p>
+  <p> <%= link_to "Create New Event", new_event_path, class:"btn btn-success" %></p>
+</div>
+
+
+
+
+
+
+
+<div class="row">
+
+	<%@events.each do |event|%>
+	<div class="col-sm-4">
+	    <div class="card" style="margin-bottom:10px">
+	      <div class="card-body">
+	        <h5 class="card-title"><%=event.title%> </h5>
+
+	        <p class="card-text"><%= event.description.first(80) %></p>
+	        <p class="card-text">Date : <%=event.start_date%> |  Duration : <%=event.duration%></p>
+	 		
+	 		<%= link_to "See Event", event_path(event), class:"btn btn-primary" %>
+	    </div>
+	  </div>	  
+	 
+	</div>
+	<%end%>
+</div>
+
+       
+

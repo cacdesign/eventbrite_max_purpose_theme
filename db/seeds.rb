@@ -13,17 +13,24 @@ require 'faker'
 #Event.destroy_all
 #Attendance.destroy_all
 
-#for test mail
 
+
+
+
+#Je crée mes évènements
+10.times do |index|
+	e=Event.create(start_date: DateTime.new(2019,rand(1..12),rand(1..28)), duration:[30,45,60,90].sample , title:Faker::HarryPotter.house , description:Faker::HarryPotter.quote , price: rand(1..1000) , location:Faker::WorldCup.city , admin: User.last)
+	p "L'evenement #{e.title} a été crée"
+end
+
+
+=begin
+
+
+#for test mail
 1.times do |index|
 	u = User.create(email: "micheleventbrite@yopmail.com" , encrypted_password: SecureRandom.urlsafe_base64 ,description:Faker::Dune.saying ,first_name: Faker::DragonBall.character , last_name: Faker::Zelda.character)	
 	p "L'utilisateur #{u.first_name} a été crée"
-end
-
-#Je crée mes évènements
-1.times do |index|
-	e=Event.create(start_date: DateTime.new(2019,rand(1..12),rand(1..28)), duration:[30,45,60,90].sample , title:Faker::HarryPotter.house , description:Faker::HarryPotter.quote , price: rand(1..1000) , location:Faker::WorldCup.city , admin: User.last)
-	p "L'evenement #{e.title} a été crée"
 end
 
 
@@ -34,7 +41,7 @@ p "Une nouvelle Attendance avec  #{a.user.first_name} partcipant à #{a.event.ti
 end
 
 
-=begin
+
 # - Je crée mes Utilisateurs
 1.times do |index|
 	u = User.create(email: "micheleventbrite@yopmail.com" , encrypted_password: SecureRandom.urlsafe_base64 ,description:Faker::Dune.saying ,first_name: Faker::DragonBall.character , last_name: Faker::Zelda.character)

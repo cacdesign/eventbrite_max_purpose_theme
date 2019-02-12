@@ -1,0 +1,37 @@
+
+
+
+<div style="text-align:center"class="jumbotron">
+  <h1 class="display-4"><%=@user.first_name%></h1>
+  <p class="lead">Do not miss my events</p>
+  <hr class="my-4">     
+   <p>Firstname :<%=@user.first_name%></p>
+<p>Lastname :<%=@user.last_name%></p>
+<p>email :<%=@user.email%></p>
+
+<%=link_to "Edit profile", edit_user_path(@user), class:"btn btn-success"%>
+
+</div>
+
+
+
+<div class="row">
+
+	<%@events.each do |event|%>
+	<div class="col-sm-4">
+	    <div class="card" style="margin-bottom:10px">
+	      <div class="card-body">
+	        <h5 class="card-title"><%=event.title%> </h5>
+
+	        <p class="card-text"><%= event.description.first(80) %></p>
+	        <p class="card-text">Date : <%=event.start_date%> |  Duration : <%=event.duration%></p>
+	 		
+	 		<%=link_to "see event", event_path(event), class:"btn btn-primary"%>
+	    </div>
+	  </div>	  
+	 
+	</div>
+	<%end%>
+</div>
+
+

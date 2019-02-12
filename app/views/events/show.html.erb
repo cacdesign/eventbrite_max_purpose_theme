@@ -1,0 +1,19 @@
+
+<div style="border: 1px solid #e3e3e3; margin-top: 20px; padding: 10px;"class="col-9 offset-2">
+<h1> <%=@event.title%></h1>
+<h3><%=@event.description%></h3>
+<br>
+<p>Date :<span style="color:#2b84ee" ><%=@event.start_date.year%>/<%=@event.start_date.month%>/<%=@event.start_date.day%> <span></p>
+<p>Starting at :  <span style="color:#2b84ee" ><%=@event.start_date.hour%>:<%=@event.start_date.min%></span></p>
+<p>Duration : <span style="color:#2b84ee" > <%=@event.duration%> mins</span></p>
+<br>
+
+
+<p>Host :<span style="color:#2b84ee" > <%=@event.admin.first_name%></span> | Price :<span style="color:#2b84ee" >  <%=@event.price%></span></p>
+
+
+<p>Location : <span style="color:#2b84ee" ><%=@event.location%></span></p>
+
+
+<p>Attending :<span style="color:#2b84ee" > <%=@attendees%></span></p>
+</div>
