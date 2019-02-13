@@ -26,5 +26,5 @@ A coooooool Rspec des familles (which with any doubt, doesn't really work...)
 
 ## Prod version
 
-* https://eventbrite-max.herokuapp.com/
+* https://eventbritemax.herokuapp.com/
 
