@@ -94,4 +94,6 @@ Rails.application.configure do
 
 #heroku
  #config.action_mailer.default_url_options = { :host => ‘eventbritemax.herokuapp.com’ }
+ config.action_mailer.default_url_options = { :host => 'YOURAPPNAME.herokuapp.com' }
+
 end
