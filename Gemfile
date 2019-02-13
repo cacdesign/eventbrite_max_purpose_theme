@@ -6,7 +6,6 @@ ruby '2.5.1'
 gem 'table_print'
 gem 'faker'
 gem 'rb-readline'
-gem 'dotenv-rails'
 gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -47,7 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails' 
   gem 'faker'
-
+gem 'dotenv-rails'
  
 end
 
