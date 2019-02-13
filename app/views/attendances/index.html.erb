@@ -1,2 +1,32 @@
-<h1>Attendances#index</h1>
-<p>Find me in app/views/attendances/index.html.erb</p>
+<h1>Attending</h1>
+<p>With pleasure</p>
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">email</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<%@attendances.each_with_index do |attendance,index|%>
+
+    <tr>
+      <th scope="row"><%=index+1%></th>
+      <td><%=attendance.user.first_name%></td>
+      <td><%=attendance.user.last_name%></td>
+      <td><%=attendance.user.email%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
+

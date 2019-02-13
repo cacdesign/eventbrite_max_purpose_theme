@@ -1,18 +1,12 @@
 class EventsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new ,:create, :destroy, :udpate]
+ 
 
   def show
    @event=Event.find(params[:id])
    @attendees=@event.attendances.count
-   puts '£'*100
-  puts @event.attendances.find_by(user:current_user)
-  puts @event.attendances.find_by(user:current_user) 
-  puts '£'*100
-  puts @event.attendances.include? current_user
-    puts '£'*100
-  puts current_user
-   puts '£'*100
+   @user=current_user
   end
 
   def index
@@ -73,7 +67,14 @@ class EventsController < ApplicationController
   end
 
 
+private
 
+  def owner
+     if current_user != User.find(params[:id])
+       flash[:danger] = "The profile page you're trying to reach is not yours"    
+       redirect_to events_path
+    end
+  end 
  
 
   

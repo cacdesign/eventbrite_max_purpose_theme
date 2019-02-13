@@ -1,10 +1,14 @@
 class AttendancesController < ApplicationController
+
+
   def new
    @event=Event.find(params[:event_id])  
   
   end
 
   def index
+  @attendances=Attendance.all
+
   end
 
   
@@ -50,4 +54,7 @@ end
 
   def update
   end
+
+
+
 end

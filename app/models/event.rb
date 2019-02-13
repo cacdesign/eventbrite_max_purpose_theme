@@ -50,6 +50,15 @@ class Event < ApplicationRecord
 
 
 
+def check_attendance(user)
+  self.attendances.each do |participation|
+    if participation.user==user
+      return true
+    else
+      return false
+    end
+  end
+end
 
 
 
