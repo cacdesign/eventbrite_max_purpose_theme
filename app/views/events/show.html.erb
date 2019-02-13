@@ -18,22 +18,12 @@
 <p>Attending :<span style="color:#2b84ee" > <%=@attendees%></span></p>
 
 
-<%
-=begin
-%>
-	&& @event.already_attendant?(current_user) %>
-
-<%if @event.admin == current_user %> 
-<% elsif @event.check_attendance(current_user)%>
-<%
-=end
-%>
 
 <% if user_signed_in? %>
 	<% if current_user == @event.admin%>
 		<div class="alert alert-info" role="alert">You're the admin of this event. I hope you plan to participate</div>
 		<%=link_to 'Mon espace évènement', event_attendances_path(@event), class:"btn btn-success" %>
-	<% elsif user_signed_in? && @event.already_attendant?(current_user) %>
+	<% elsif  @event.already_attendant?(current_user) %>
 		<div class="alert alert-info" role="alert">You already participates to this event</div>
 	<%else%>
 		<%=link_to 'Participate', new_event_attendance_path(@event), class:"btn btn-success" %>

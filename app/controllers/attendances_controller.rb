@@ -30,7 +30,7 @@ class AttendancesController < ApplicationController
     :currency    => 'usd'
   )
 
-  a=Attendance.create(event: @event, user:@user, stripe_customer_id: params[:stripeToken])
+  a=Attendance.create(event: @event, user:@user, stripe_customer_id: customer)
   puts a.errors.messages
 
   if a.save 
