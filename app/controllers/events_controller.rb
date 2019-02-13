@@ -5,7 +5,14 @@ class EventsController < ApplicationController
   def show
    @event=Event.find(params[:id])
    @attendees=@event.attendances.count
-   puts @attendees
+   puts '£'*100
+  puts @event.attendances.find_by(user:current_user)
+  puts @event.attendances.find_by(user:current_user) 
+  puts '£'*100
+  puts @event.attendances.include? current_user
+    puts '£'*100
+  puts current_user
+   puts '£'*100
   end
 
   def index
@@ -64,6 +71,10 @@ class EventsController < ApplicationController
 
   def update
   end
+
+
+
+ 
 
   
 end
