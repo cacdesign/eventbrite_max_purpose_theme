@@ -29,14 +29,17 @@
 =end
 %>
 
-<% if user_signed_in? && current_user == @event.admin%>
-	<div class="alert alert-info" role="alert">You're the admin of this event. I hope you plan to participate</div>
-	<%=link_to 'Mon espace évènement', event_attendances_path(@event), class:"btn btn-success" %>
-	
-<% elsif user_signed_in? && @event.already_attendant?(current_user) %>
+<% if user_signed_in? %>
+	<% if current_user == @event.admin%>
+		<div class="alert alert-info" role="alert">You're the admin of this event. I hope you plan to participate</div>
+		<%=link_to 'Mon espace évènement', event_attendances_path(@event), class:"btn btn-success" %>
+	<% elsif user_signed_in? && @event.already_attendant?(current_user) %>
 		<div class="alert alert-info" role="alert">You already participates to this event</div>
+	<%else%>
+		<%=link_to 'Participate', new_event_attendance_path(@event), class:"btn btn-success" %>
+	<%end%>
 <%else%>
-	<%=link_to 'Participate', new_event_attendance_path(@event), class:"btn btn-success" %>
+	<div class="alert alert-info" role="alert">You need to log in to participate to an event</div>
 <%end%>
 </div>
 
