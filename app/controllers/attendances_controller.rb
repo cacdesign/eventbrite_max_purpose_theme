@@ -8,7 +8,7 @@ class AttendancesController < ApplicationController
 
   def index
   @attendances=Attendance.all
-
+  @event=Event.find(params[:event_id]) 
   end
 
   

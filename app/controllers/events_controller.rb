@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new ,:create, :destroy, :udpate]
- 
+  before_action :owner, only:[:update, :destroy, :edit]
 
   def show
    @event=Event.find(params[:id])
@@ -61,17 +61,46 @@ class EventsController < ApplicationController
   end
 
   def destroy
+     @event=Event.find(params[:id])
+     @event.destroy
+     flash[:success] = "Event has been deleted"
+     redirect_to events_path
   end
 
+ def edit
+     @event=Event.find(params[:id])
+  end
+
+
   def update
+    @event=Event.find(params[:id])
+    title=params[:event][:title]
+    description=params[:event][:description]
+    location=params[:event][:location]
+    duration = params[:event][:duration].to_i
+    price=params[:event][:price].to_i
+    start_date=params[:event][:start_date]
+    admin=current_user
+    @event.update(title:title, description:description,location:location, duration:duration, price:price, start_date:start_date, admin:admin)
+    puts @event.errors.messages
+
+     if @event.save
+     flash[:success] = "Event has been successfully created"
+      redirect_to event_path(@event)
+
+    else
+     flash[:danger] = "Oups, something went wrong"
+      redirect_to edit_event_path(@event)
+    end
   end
 
 
 private
 
   def owner
-     if current_user != User.find(params[:id])
-       flash[:danger] = "The profile page you're trying to reach is not yours"    
+    @event=Event.find(params[:id])
+     if current_user != @event.admin
+       flash[:danger] = "The page you're trying to reach is not yours"    
        redirect_to events_path
     end
   end 

@@ -1,0 +1,54 @@
+<div class="col-8 offset-2">
+    <br><br>
+<h1>Edit event</h1> <%=link_to 'Delete Event', event_path(@event), method:'DELETE', class:'btn btn-danger'%>
+<br><br>
+        <%= form_for(:event, url: event_path(@event), html: {method:'PATCH'} ) do |f| %>
+
+         
+
+  			<div class="form-group">
+            <label>Title</label>
+            <%= f.text_field :title , class:'form-control'%>
+        	</div>
+
+			<div class="form-group">
+            <label>Date</label>
+              <%= f.text_field :start_date , class:'form-control'%>
+        	</div>
+            
+
+			<div class="form-group">
+            <label>Duration</label>
+              <%= f.text_field :duration , class:'form-control'%>
+        	</div>
+
+           
+
+
+            <div class="form-group">
+            <label>Description</label><br>
+            <%= f.text_area :description , class:'form-control'%>
+        	</div>
+
+
+              <div class="form-group">
+            <label>Location</label><br>
+            <%= f.text_field :location , class:'form-control'%>
+            </div>
+
+
+ 			
+			<div class="form-group">
+            <label>Location</label><br>
+            <%= f.text_field :price , class:'form-control'%>
+            </div>
+          
+
+
+
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary" > Modify</button> 
+            </div>
+
+        <%end%>
+</div>
