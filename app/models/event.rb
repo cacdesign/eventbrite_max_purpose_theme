@@ -50,16 +50,18 @@ class Event < ApplicationRecord
 
 
 
-def check_attendance(user)
-  self.attendances.each do |participation|
-    if participation.user==user
-      return true
-    else
-      return false
-    end
-  end
-end
 
+# check if user is already attendant to display or not stripe button in event_path
+  def already_attendant?(current_user)
+  	already_attendant = false
+
+  	self.attendances.each do |attendance|
+  		if attendance.user == current_user
+  			already_attendant = true
+  		end
+  	end
+  	return already_attendant
+  end
 
 
 
