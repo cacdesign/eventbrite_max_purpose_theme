@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events=Event.all
+    @events=Event.all.order('created_at ASC')
   end
 
 
@@ -81,6 +81,7 @@ class EventsController < ApplicationController
     price=params[:event][:price].to_i
     start_date=params[:event][:start_date]
     admin=current_user
+    @event.illustration.attach(params[:illustration])
     @event.update(title:title, description:description,location:location, duration:duration, price:price, start_date:start_date, admin:admin)
     puts @event.errors.messages
 

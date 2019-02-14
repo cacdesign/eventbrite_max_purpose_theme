@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
 	has_many :organised_events, foreign_key: 'admin_id', class_name: "Event"
 
+  has_one_attached :avatar
+
 #validates :first_name, presence: true
 #validates :last_name, presence: true
 #validates :email, presence: true

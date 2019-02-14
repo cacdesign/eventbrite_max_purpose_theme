@@ -17,6 +17,11 @@
 
 <p>Attending :<span style="color:#2b84ee" > <%=@attendees%></span></p>
 
+<%if @event.illustration.attached?%>
+  <%= image_tag @event.illustration, alt: 'illustration', size: '400x200' %>
+<%else%>
+
+<%end%>
 
 
 <% if user_signed_in? %>

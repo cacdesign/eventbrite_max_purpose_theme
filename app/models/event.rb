@@ -3,7 +3,7 @@ class Event < ApplicationRecord
 	has_many :users, through: :attendances
 	belongs_to :admin, class_name: "User"
 
-
+	 has_one_attached :illustration
 
 	validates :start_date, presence: true
 	validate :start_date_is_not_past

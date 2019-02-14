@@ -52,3 +52,21 @@
 
         <%end%>
 </div>
+
+
+
+<div class="col-8 offset-2">
+    <br><br>
+<h2>Add Illustration</h2> 
+<%if @event.illustration.attached?%>
+  <%= image_tag @event.illustration, alt: 'illustration', size: '50x50' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'image lié à cet évènement ===</p>
+<%end%>
+
+<h3>Changer d'image ?</h3>
+<%= form_tag event_illustrations_path(@event), multipart: true do %>
+  <%= file_field_tag :illustration %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+</div>

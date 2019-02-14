@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 		puts description =  params[:user][:description]
 
 		 @user.update(first_name: first_name, last_name: last_name,  description: description)
-	
+		user.avatar.attach(params[:avatar])
 
 
 		if @user.save
