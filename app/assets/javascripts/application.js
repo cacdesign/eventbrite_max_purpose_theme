@@ -2,7 +2,7 @@
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
+// assets/javascripts directory can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file. JavaScript code in this file should be added after the last require_* statement.
@@ -18,10 +18,19 @@
 //= require_tree .
 
 
- //= require assets/jquery/jquery.min
- //= require assets/bootstrap/js/bootstrap.bundle.min
- //= require assets/jquery-easing/jquery.easing.min
- //= require assets/magnific-popup/jquery.magnific-popup.min
- //= require assets/js/jqBootstrapValidation
- //= require assets/js/contact_me
- //= require assets/js/freelancer.min
+ <!-- Core -->
+    //= require assets/jquery/dist/jquery.min
+    //= require assets/bootstrap/dist/js/bootstrap.bundle.min
+    //= require assets/in-view/dist/in-view.min
+
+
+
+
+    <!-- Page plugins -->
+    //= require assets/highlight.js/lib/highlight
+
+
+
+    <!-- Theme JS -->
+
+    //= require assets/js/theme.min
