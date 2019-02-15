@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
 
+  get 'secrets/show'
   get 'illustrations/create'
   get 'avatars/create'
   devise_for :users
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   	resources :illustrations, only: [:create]
   end
 
-
+  resources :secrets
   resources :users do
   resources :avatars, only: [:create]
 end

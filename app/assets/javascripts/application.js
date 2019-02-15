@@ -13,4 +13,15 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+
+
 //= require_tree .
+
+
+ //= require assets/jquery/jquery.min
+ //= require assets/bootstrap/js/bootstrap.bundle.min
+ //= require assets/jquery-easing/jquery.easing.min
+ //= require assets/magnific-popup/jquery.magnific-popup.min
+ //= require assets/js/jqBootstrapValidation
+ //= require assets/js/contact_me
+ //= require assets/js/freelancer.min
