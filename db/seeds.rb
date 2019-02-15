@@ -25,7 +25,7 @@ end
 
 #Je crée mes évènements
 5.times do |index|
-	e=Event.create(start_date: DateTime.new(2019,rand(3..12),rand(1..28)), duration:[30,45,60,90].sample , title:Faker::HarryPotter.house , description:Faker::HarryPotter.quote , price: rand(1..1000) , location:Faker::WorldCup.city , admin: User.all.sample)
+	e=Event.create(start_date: DateTime.new(2019,rand(3..12),rand(1..28)), duration:[30,45,60,90].sample , title:Faker::HarryPotter.house , description:Faker::HarryPotter.quote , price: rand(1..1000) , location:Faker::WorldCup.city , admin: User.all.sample, validated: true)
 	p "L'evenement #{e.title} a été crée"
 end
 

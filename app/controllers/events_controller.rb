@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new ,:create, :destroy, :udpate]
   before_action :owner, only:[:update, :destroy, :edit]
+  before_action :under_validation,  only:[:show]
 
   def show
    @event=Event.find(params[:id])
@@ -10,7 +11,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events=Event.all.order('created_at ASC')
+    @events_validated=Event.where(validated:true).order('created_at ASC')
+   
   end
 
 
@@ -45,7 +47,7 @@ class EventsController < ApplicationController
     #l'admin
     puts @admin=current_user
    
-  e=Event.create(start_date: @start_date, duration: @duration, title: @title, description: @description, price: @price, location: @location, admin: @admin)
+  e=Event.create(start_date: @start_date, duration: @duration, title: @title, description: @description, price: @price, location: @location, admin: @admin, validated: nil)
   puts e.errors.messages
 
     if e.save
@@ -81,8 +83,9 @@ class EventsController < ApplicationController
     price=params[:event][:price].to_i
     start_date=params[:event][:start_date]
     admin=current_user
+    validated=@event.validated
     @event.illustration.attach(params[:illustration])
-    @event.update(title:title, description:description,location:location, duration:duration, price:price, start_date:start_date, admin:admin)
+    @event.update(title:title, description:description,location:location, duration:duration, price:price, start_date:start_date, admin:admin, validate:validate)
     puts @event.errors.messages
 
      if @event.save
@@ -105,7 +108,21 @@ private
        redirect_to events_path
     end
   end 
+
  
+ def under_validation 
+  puts @event=Event.find(params[:id])
+  if current_user == @event.admin
+      redirect_to events_path(@event)   
+  else
+    if @event.validated == nil || @event.validated == false
+       flash[:danger] = "This event is not validated yet"    
+      redirect_to events_path
+    end
+
+  end
 
   
+end
+
 end

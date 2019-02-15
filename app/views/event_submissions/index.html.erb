@@ -1,0 +1,36 @@
+<h1>EventSubmissions#index</h1>
+<p>Find me in app/views/event_submissions/index.html.erb</p>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Status</th>
+       <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% @events.each_with_index do |event, index|%>
+
+    <tr>
+      <th scope="row"><%=index+1%></th>
+      <td><%=event.title%></td>
+      <td><%=event.admin.last_name%></td>
+      <td><%=event.validated%></td>
+      <%if event.validated ==false || event.validated ==nil%> 
+      		<td><%=link_to 'Validate', event_submission_path(event), method:'PATCH', class:"btn btn-success" %></td>
+      <%else%>
+      		 <td><%=link_to 'Unvalidate', event_submission_path(event), method:'PATCH', class:"btn btn-danger" %></td>
+      <%end%>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
+
